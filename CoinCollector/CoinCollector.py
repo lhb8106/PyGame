@@ -51,3 +51,5 @@ def update():
 
 clock.schedule(time_up, 10.0)
 place_coin()
+
+pgzrun.go()
