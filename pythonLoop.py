@@ -1,10 +1,10 @@
 count = 1
-num2 = 9
+num = 0
 
-for num1 in range(10, 54):
-    if(num1 <= num2):
+for i in range(10, 54):
+    if(i <= num):
         continue
-    for num2 in range(num1, num1+count):
-        print(num2, end=' ')
+    for num in range(i, i+count):
+        print(num, end=' ')
     count += 1
     print()
