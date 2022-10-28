@@ -14,11 +14,13 @@ for j in range(inputValue):
         line = ' '+str(2*(inputValue-1-i)+1)+line+str(2*(inputValue-1-i)+1)+' '
         
     line = line.strip()
+    print(line)
     graph.append(line)
 
 #반대로 한번 더 출력
 for j in range(inputValue):
+    print(line)
     graph.append(graph[inputValue-1-j])
     
-for line in graph:
-    print(line)
+#for line in graph:
+    #print(line)
