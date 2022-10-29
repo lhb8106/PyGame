@@ -1,5 +1,4 @@
 import pgzrun
-from pgzero.builtins import Actor, animate, keyboard
 from random import randint
 
 WIDTH = 400
@@ -36,11 +35,6 @@ def on_mouse_down(pos):
         if next_dot:
             lines.append((dots[next_dot -1].pos, dots[next_dot].pos))
         next_dot = next_dot +1
-    else:
-        line = []
-        next_dot = 0
-
-
 
 
 pgzrun.go()
