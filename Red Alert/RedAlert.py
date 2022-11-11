@@ -1,29 +1,40 @@
 import pgzrun
 import random
 
+
+#폰트 색깔 = white
 FONT_COLOR = (255,255,255)
 
+#화면 크기 결정
 WIDTH = 800
 HEIGHT = 600
 
+#CENTER 좌표 구하기
 CENTER_X = WIDTH /2
 CENTER_Y = HEIGHT/2
 CENTER = (CENTER_X, CENTER_Y)
 
-FINAL_LEVEL = 6
-START_SPEED = 10
-COLORS = ["green", "blue"]
 
+FINAL_LEVEL = 6	#6단계까지 존재
+START_SPEED = 10	#시작할 때 speed = 10
+COLORS = ["green", "blue"]  #color 리스트에 green, blue 존재
+
+
+#초기화
 game_over = False
 game_complete = False
 current_level = 1
 stars = []
 animations = []
 
+
+#객체 그리기
+#game over & game complete : 해당 메시지
+#그 외: 별들
 def draw():
     global stars, current_level, game_over, game_complete
     screen.clear()
-    screen.blit("space", (0,0))
+    screen.blit("space", (0,0))     #space를 0,0에 그려라 (표시할 객체, 위치)
     if game_over:
         display_message("GAME OVER!", "Try again.")
     elif game_complete:
@@ -32,10 +43,12 @@ def draw():
         for star in stars:
             star.draw()
 
+#star에 아무것도 없다면 make_stars호출
 def update():
     global stars
     if len(stars) ==0:
         stars = make_stars(current_level)
+
 
 def make_stars(number_of_extra_stars):
     colors_to_create = get_colors_to_create(number_of_extra_stars)
@@ -43,18 +56,6 @@ def make_stars(number_of_extra_stars):
     layout_stars(new_stars)
     animate_stars(new_stars)
     return new_stars
-
-def get_colors_to_create(number_of_extra_stars):
-    return []
-
-def create_stars(color_to_create):
-    return []
-
-def layout_stars(stars_to_layout):
-    pass
-
-def animate_stars(stars_to_animate):
-    pass
 
 
 def get_colors_to_create(number_of_extra_stars):
@@ -76,7 +77,7 @@ def layout_stars(stars_to_layout):
     number_of_gaps = len(stars_to_layout) +1
     gap_size = WIDTH/ number_of_gaps
     random.shuffle(stars_to_layout)
-    for index, star in enumberate(stars_to_layout):
+    for index, star in enumerate(stars_to_layout):
         new_x_pos = (index + 1) * gap_size
         star.x = new_x_pos
 
@@ -121,4 +122,4 @@ def display_message(heading_text, sub_heading_text):
                      color = FONT_COLOR)
 
 
-
+pgzrun.go()
