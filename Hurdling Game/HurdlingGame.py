@@ -29,6 +29,7 @@ label = canvas.create_text(600, 250, text='score : 0, level : 0', font =('consol
 
 # make human
 runlist = [run0image, run1image, run2image,run1image]
+
 index = 0
 human = canvas.create_image(200, 350, image = runlist[index])
 jump = False
@@ -59,6 +60,8 @@ def running() :
             index += 1
             canvas.itemconfig(human, image = runlist[index % 4])            
       canvas.after(300, running)
+
+      
 def jumpevent(event) :
       jumping()      
 canvas.bind_all("<KeyRelease-s>", jumpevent)
